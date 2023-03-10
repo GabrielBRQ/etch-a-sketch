@@ -1,3 +1,8 @@
+@font-face {
+    font-family: 'Roboto';
+    src: url(fonts/Roboto-Regular.ttf) format('truetype');
+}
+
 :root{
     --grid-cols: 1;
     --grid-rows: 1;
@@ -11,6 +16,7 @@ body{
     background-color: #1f2937;
     padding: 0;
     margin: 0;
+    flex: 1;
 }
 
 #container {   
@@ -18,14 +24,16 @@ body{
     grid-template-columns: repeat(var(--grid-cols), var(--size));
     grid-template-rows: repeat(var(--grid-rows), var(--size));
     padding: 25px;
-    margin: 50px;
+    margin-top: 10px;
     margin-bottom: 25px;
     border-radius: 8px;
     background-color: rgb(192, 22, 22);
 }
 
-.board{
-    background-color: aliceblue;
+#buttonContainer{
+    display: flex;
+    flex: 1;
+    gap: 18px;
 }
 
 #gridButton,
@@ -34,11 +42,26 @@ body{
     background-color: aliceblue;
     color: black;
     border: 2px solid black;
+    padding: 4px 10px 4px 10px;
     margin-bottom: 25px;
     border-radius: 8px;
 }
 
 #rainbowButton{
     background-image: linear-gradient(to left, violet, indigo, blue, green, yellow, orange, red);
-    color: aliceblue;
+    color: black;
+}
+
+.board{
+    background-color: aliceblue;
+}
+
+.credits{
+    font-family: 'Roboto';
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-self: stretch;
+    justify-content: center;
+    gap: 12px;
 }
