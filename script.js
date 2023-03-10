@@ -8,10 +8,11 @@ var color = 000;
 
 //button to change the number of squares
 gridButton.addEventListener('click', () => {
-    squares = prompt('Choose a number between 1 and 64: ', '');
-    if(squares > 64 || squares < 1){
-        alert('We only accept numbers between 1 and 64');
-    }else if (squares < 65 && squares > 0){
+    let answer = prompt('Choose a number between 1 and 64: ', '');
+    if(answer > 64 || answer < 1){
+        alert('We only accept numbers between 1 and 64');     
+    }else if (answer < 65 && answer> 0){
+        squares = +answer;
         calcSquareSize(squares);       
         container.innerHTML = ''
         createGrid(squares);
