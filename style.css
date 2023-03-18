@@ -9,8 +9,10 @@
     --size: 25px;
 }
 
+
 body{
     display: flex;
+    height: 1fr;
     flex-direction: column;
     align-items: center;
     background-color: #1f2937;
@@ -19,12 +21,19 @@ body{
     flex: 1;
 }
 
+a{
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: black;
+}
+
 #container {   
 	display: grid;
     grid-template-columns: repeat(var(--grid-cols), var(--size));
     grid-template-rows: repeat(var(--grid-rows), var(--size));
     padding: 25px;
-    margin-top: 10px;
     margin-bottom: 25px;
     border-radius: 8px;
     background-color: rgb(192, 22, 22);
@@ -32,24 +41,36 @@ body{
 
 #buttonContainer{
     display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
     flex: 1;
     gap: 18px;
 }
 
-#gridButton,
-#clearButton,
-#rainbowButton{
+button { 
+    transition-duration: 0.3s;
     background-color: aliceblue;
     color: black;
-    border: 2px solid black;
+    border: none;
     padding: 4px 10px 4px 10px;
     margin-bottom: 25px;
     border-radius: 8px;
+    align-items: center;
+    display: flex;
+    gap: 8px;
+    font-family: 'Roboto';
+    font-weight: 900;
 }
 
-#rainbowButton{
-    background-image: linear-gradient(to left, violet, indigo, blue, green, yellow, orange, red);
-    color: black;
+button:hover {
+    background-color: #384558;
+    color: rgb(192, 22, 22);;
+}
+
+button:active {
+    background-color: rgb(185, 174, 174);
+    box-shadow: 0 2px #252525;
+    transform: translateY(2px);
 }
 
 .board{
@@ -58,10 +79,12 @@ body{
 
 .credits{
     font-family: 'Roboto';
+    width: 99%;
     font-weight: bold;
     display: flex;
     align-items: center;
     justify-self: stretch;
-    justify-content: center;
-    gap: 12px;
+    justify-content: space-between;
+    margin:8px;
+    
 }

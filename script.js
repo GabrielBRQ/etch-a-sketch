@@ -2,8 +2,10 @@ const container = document.querySelector('#container');
 const gridButton = document.querySelector('#gridButton');
 const clearButton = document.querySelector('#clearButton');
 const rainbowButton = document.querySelector('#rainbowButton');
+const eraserButton = document.querySelector('#eraserButton');
 var squares = 16;
 var rainbow = false;
+var eraser = false;
 var color = 000;
 
 //button to change the number of squares
@@ -18,28 +20,58 @@ gridButton.addEventListener('click', () => {
         createGrid(squares);
     }else{
         alert('Please type a number');
-    }   
-})
+    }
+    deactivateEraser(); 
+});
+
 //clear screen
 clearButton.addEventListener('click', () => {
     container.innerHTML = ''
     createGrid(squares);
-})
+    deactivateEraser();
+});
 
 rainbowButton.addEventListener('click', () => {
-    rainbow = true;
-})
+    if(rainbow){
+        rainbow = false;
+        rainbowButton.style.backgroundColor = 'aliceblue';
+    }else{
+        rainbowButton.style.backgroundColor = '#384558';
+        rainbow = true;
+        deactivateEraser();
+    }
+});
+
+eraserButton.addEventListener('click', () => {
+    if(eraser){
+        deactivateEraser();
+    }else{
+        eraserButton.style.backgroundColor = '#384558';
+        eraser= true;
+    }  
+});
+
+function deactivateEraser(){
+    eraser = false;
+    eraserButton.style.backgroundColor = 'aliceblue';
+}
 
 //function to adapt squares to screen size
 function calcSquareSize(squares){
-    var size = 400;
-    for(;size * squares > 400; size = size - 0.1){}
+    if(window.innerWidth < 1000){
+        var size = ((window.innerWidth/squares) / 1.8);
+    }else{
+        var size = ((window.innerWidth/squares) / 3);
+    }
+    
+    for(;size > window.innerWidth; size = size - 0.1){}
     container.style.setProperty('--size', size + 'px');
-    container.style.setProperty('--size', size + 'px'); 
-}
+};
 
 //create and 'paint' squares
 function createGrid(cols){
+    calcSquareSize(cols);
+     
     container.style.setProperty('--grid-cols', cols);
     container.style.setProperty('--grid-rows', cols); 
     
@@ -51,7 +83,10 @@ function createGrid(cols){
         
         container.appendChild(board);
         board.addEventListener('mouseover', () => {
-            if(rainbow){
+            if(eraser){
+                board.style.backgroundColor = 'aliceblue';
+            }
+            else if(rainbow){
                 board.style.backgroundColor = "#" + color;
             }  
             else{
