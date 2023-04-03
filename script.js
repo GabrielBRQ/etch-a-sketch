@@ -75,7 +75,6 @@ function createGrid(cols) {
     container.style.setProperty('--grid-cols', cols);
     container.style.setProperty('--grid-rows', cols);
 
-    let squareSize = document.getElementById('container').clientWidth / cols;
     for (x = 1; x <= (cols * cols); x++) {
         const color = Math.floor(Math.random() * 16777215).toString(16);
         const board = document.createElement('div');
