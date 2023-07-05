@@ -6,7 +6,6 @@ const eraserButton = document.querySelector('#eraserButton');
 var squares = 16;
 var rainbow = false;
 var eraser = false;
-var color = 000;
 
 //button to change the number of squares
 gridButton.addEventListener('click', () => {

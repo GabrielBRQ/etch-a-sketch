@@ -87,5 +87,8 @@ button:active {
     justify-self: stretch;
     justify-content: space-between;
     margin: 8px;
+}
 
+.credits a{
+    color: rgb(192, 22, 22);;
 }
